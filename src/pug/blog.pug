@@ -1,0 +1,38 @@
+extends template.pug
+
+mixin accordionItem(accordion_items)
+	.accordion-item
+		each item in accordion_items
+			h2.accordion-header
+				button.accordion-button(type="button" data-bs-toggle="collapse" data-bs-target=item.target aria-expanded=item.ariaExpanded aria-controls=item.controls class=item.collapsed) Accordion Item ##{item.number}
+			.accordion-collapse.collapse(id=item.id class=item.show data-bs-parent="#accordionExample")
+				.accordion-body
+					strong #{item.text}
+
+append content
+	.accordion#accordionExample
+		+accordionItem([{target: '#collapseOne',
+							ariaExpanded: "true",
+							controls: "collapseOne",
+							number: '1',
+							id: "collapseOne",
+							show: "show",
+							text: "This is the first item's accordion body."
+							}])
+		+accordionItem([{target: '#collapseTwo',
+							ariaExpanded: "false",
+							controls: "collapseTwo",
+							collapsed: 'collapsed',
+							number: '2',
+							id: "collapseTwo",
+							text: "This is the second item's accordion body."
+							}])
+		+accordionItem([{target: '#collapseThree',
+							ariaExpanded: "false",
+							controls: "collapseThree",
+							collapsed: 'collapsed',
+							number: '3',
+							id: "collapseThree",
+							text: "This is the third item's accordion body."
+							}])
+

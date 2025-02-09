@@ -1,0 +1,37 @@
+extends template.pug 
+
+mixin formDiv(form_items)
+	.mb-3
+		each item in form_items
+			label.form-label(for=item.for) #{item.name}
+			input.form-control(type=item.type id=item.id disabled=item.disabled multiple=item.multiple)
+
+
+append content
+	form.form
+		+formDiv([{for: 'formFile',
+					name: 'Default file input example',
+					type: 'file',
+					id: 'formFile'}])
+		+formDiv([{for: 'formFileMultiple',
+					name: 'Multiple files input example',
+					type: 'file',
+					id: 'formFileMultiple',
+					multiple: true
+					}])
+		+formDiv([{for: 'formFileDisabled',
+					name: 'Disabled file input example',
+					type: 'file',
+					id: 'formFileDisabled',
+					disabled: true
+					}])
+		+formDiv([{for: 'formFileSm',
+					name: 'Small file input example',
+					type: 'file',
+					id: 'formFileSm'
+					}])
+		+formDiv([{for: 'formFileLg',
+					name: 'Large file input example',
+					type: 'file',
+					id: 'formFileLg'
+					}])

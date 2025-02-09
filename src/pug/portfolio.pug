@@ -1,0 +1,22 @@
+extends template.pug 
+
+
+//- создание миксина
+mixin slide(src, active='')
+	div(class='carousel-item ' + active)
+		img(src=src alt="...").d-block.w-100
+
+
+append content
+	//- Пример использования миксина
+	div#carouselExample.carousel.slide
+		div.carousel-inner
+			+slide('https://animalcarecentersmyrna.com/wp-content/uploads/2021/08/Untitled-design-2021-08-19T162152.857-768x644.png', 'active')
+			+slide('https://animalcarecentersmyrna.com/wp-content/uploads/2021/08/Untitled-design-2021-08-19T162133.671-768x644.png')
+			+slide('https://animalcarecentersmyrna.com/wp-content/uploads/2021/08/Untitled-design-2021-08-19T162152.857-768x644.png')
+		button.carousel-control-prev(type="button" data-bs-target="#carouselExample" data-bs-slide="prev")
+			span.carousel-control-prev-icon(aria-hidden="true")
+			span.visually-hidden Previous
+		button.carousel-control-next(type="button" data-bs-target="#carouselExample" data-bs-slide="next")
+			span.carousel-control-next-icon(aria-hidden="true")
+			span.visually-hidden Next

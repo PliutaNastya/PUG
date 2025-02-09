@@ -1,0 +1,12 @@
+mixin menu(menu_items)
+	ul.nav
+		each item in menu_items
+			li.nav-item: a.nav-link(href=item.href class=currentPage == item.href ? 'active' : '') #{item.name}
+
+header.header
+	.header__container
+		+menu([{href: 'index.html', name: 'Home'},
+				{href: 'blog.html', name: 'Blog'},
+				{href: 'contacts.html', name: 'Contacts'},
+				{href: 'portfolio.html', name: 'Portfolio'}
+				])
